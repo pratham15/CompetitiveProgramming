@@ -10,17 +10,16 @@ void solve(){
     auto check = [](int t, int l, int r){
         return l <= t && r >= t; 
     };
-    vector<int> prv(n+1, 0), nxt(n+1, 0);
+    vector<vector<int>>  dp(n+1, vector<int>(n+1, -1));
+    dp[0][0] = 0;
     for(int i = 0; i < n; ++i){
         currentTime += a[i];
-        for(int p = 0; p <= n; ++p){
-            nxt[p] = max(nxt[p], prv[p]+ check((currentTime- p) % h, l, r));
-            if( p < n ) nxt[p+1] =  max(nxt[p+1], prv[p] + check((currentTime - p) % h, l, r)); 
+        for(int j= 0;j <= n; ++j){
+            dp[i+1][j] = max(dp[i+1][j], dp[i][j] + check((currentTime - j) % h, l, r));
+            if( j < n ) dp[i+1][j+1] = max(dp[i+1][j+1], dp[i][j] + check((currentTime - 1 - j) % h, l, r));
         }
-        swap(prv, nxt);
     }
-    cout << *max_element(prv.begin(), prv.end());
-    cout << *max_element(nxt.begin(), nxt.end());
+    cout << *max_element(dp[n].begin(), dp[n].end());
 }
 
 int main(){
