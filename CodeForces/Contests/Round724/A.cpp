@@ -4,9 +4,10 @@ mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
 
 void solve(){
     int n;    
-    cin >> n;
-    vector<int> a(n);
-    for(auto &x : a) cin >> x;
+    n = 2;
+    vector<int> a;
+    a.push_back(0);
+    a.push_back(-1);
     int k = n;
     while(a.size() <=300){
         n = k;
@@ -36,8 +37,7 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     int t;
-    t = 1;
-    cin >> t;
+    t = 50;
     while(t--) solve();
 }
 

@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
-
+ 
 void solve(){
     int n, k;
     cin >> n>> k;
@@ -29,7 +29,7 @@ void solve(){
     auto del = [&](int val) -> void {
         if(h.find(val) != h.end()) h.erase(h.find(val));
         else l.erase(l.find(val));
-        if(l.empty()){
+        if(l.empty()) {
             l.insert(*h.begin());
             h.erase(h.begin());
         }
@@ -48,7 +48,7 @@ void solve(){
         cout << *prev(l.end()) << ' ' ;
     }
 }
-
+ 
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
@@ -57,4 +57,3 @@ int main(){
     //cin >> t;
     while(t--) solve();
 }
-
