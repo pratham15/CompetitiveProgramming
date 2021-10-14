@@ -23,7 +23,7 @@ int dfs1(int total, int i, int j, int &n) {
 
 // try every possible path and then do dfs1
 void dfs2(int k, int i, int j) {
-    if(i > n-1 || j > n-1 || i < 0 || j < 0) return;
+    if( i < 0 || j < 0) return;
     bool block = false;
     if(p[i][j] == '#') block = true;
     if(k==1) {
@@ -34,9 +34,7 @@ void dfs2(int k, int i, int j) {
         return;
     }
     p[i][j] = '.';
-    dfs2(k-1, i+1, j);
     dfs2(k-1, i-1, j);
-    dfs2(k-1, i, j+1);
     dfs2(k-1, i, j-1);
     if(block) p[i][j] = '#';
 }

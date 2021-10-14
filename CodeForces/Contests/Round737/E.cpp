@@ -7,7 +7,7 @@ int main(){
     string s, k = "Done";
     while(T--) {
         bool win = false;
-        for(int i = 1; i <= 7; ++i) {
+        for(int i = 8; i >= 2; --i) {
             if(i&1) {
                 for(int j = 1; j <= 8; ++j) {
                     cout << i << ' ' << j << '\n';
